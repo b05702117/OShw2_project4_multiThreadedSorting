@@ -1,21 +1,34 @@
-# Introduction
+# Parallel Merge Sort
 
-This program sorts an array of integers using multi-threading. The program uses two sorting threads to sort two halves of the array using the insertion sort algorithm, and a third merging thread to merge the sorted halves. The program implements the sorting algorithm using POSIX threads.
+## Introduction
 
-# Usage
+This program implements a parallel version of the Merge Sort algorithm, which sorts an array of integers in ascending order.
 
-```bash
+The program generates an array of size ARRAY_SIZE with random integer values between 0 and 49 (inclusive) using the initArray() function. The number of threads used for sorting is defined by NUM_THREADS.
+
+The first two threads sort the left and right halves of the array using the insertionSort() function in parallel. Once the sorting threads have completed, the third thread merges the two sorted halves using the merge() function. 
+
+The program prints the original array before sorting and the sorted array after sorting. Note that the array is generated randomly, so the output might be different every time the program is executed.
+
+## Usage
+
+Compile the program using the following command:
+```
 gcc -o multithreadedSorting multithreadedSorting.c -pthread
+```
+
+Run the program with the following command:
+```
 ./multithreadedSorting
 ```
 
-# output
+## output
 
-Upon execution, the program will output the original array, followed by the sorted array
+Since the program generates an array randomly, the output may vary each time the program is run. Below is an example output for reference:
 
 ```bash
 original array:
-22, 19, 42, 17, 25, 4, 14, 8
+44, 42, 25, 26, 32, 32, 15, 40
 sorted array:
-4, 8, 14, 17, 19, 22, 25, 42
+15, 25, 26, 32, 32, 40, 42, 44
 ```
